@@ -1,15 +1,16 @@
 const { ApolloServer } = require("apollo-server");
 const { mainCards, animals, categories } = require("./db");
-const typeDeFS = require("./schema");
+const typeDefs = require("./schema");
 const Query = require("./resolvers/Query");
+const Mutation = require("./resolvers/Mutation");
 const Animal = require("./resolvers/Animal");
 const Category = require("./resolvers/Category");
-const Mutation = require("./resolvers/Mutation");
 
 const server = new ApolloServer({
   typeDefs,
   resolvers: {
     Query,
+    Mutation,
     Animal,
     Category,
   },
@@ -21,5 +22,5 @@ const server = new ApolloServer({
 });
 
 server.listen().then(({ url }) => {
-  console.log(`server ready at ${url}`);
+  console.log(`🚀  Server ready at ${url}`);
 });
